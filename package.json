@@ -20,9 +20,9 @@
     "winston-console-formatter": "^1.0.0-beta.3"
   },
   "scripts": {
-    "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
-    "start": "react-scripts start",
+    "build-css": "node-sass-chokidar src/styles/scss/ -o src/styles/css/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/styles/scss/ -o src/styles/css/ --watch --recursive",
+    "start": "concurrently --kill-others \"nodemon server/server.js\" \"react-scripts start\" \"npm run watch-css\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
@@ -30,6 +30,7 @@
   "proxy": "http://localhost:3005",
   "devDependencies": {
     "babel-eslint": "^8.0.2",
+    "concurrently": "^3.6.0",
     "eslint": "^4.11.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.7.0",
