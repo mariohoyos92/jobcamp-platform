@@ -1,0 +1,46 @@
+.home {
+  width: 100vw;
+  height: auto;
+  header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  h2 {
+    text-align: center;
+  }
+
+  .quick-filters {
+    padding: 0 10vw;
+  }
+  .bootcamp-type {
+    height: 100px;
+    width: 100px;
+    border: solid black;
+  }
+
+  .post-job-notification {
+    border: solid lightgray;
+  }
+
+  .selected-tags-container {
+    padding: 1vh 10vw;
+  }
+
+  .posting {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    img {
+      height: 80px;
+      width: 80px;
+    }
+
+    .tags {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: flex-start;
+    }
+  }
+}
