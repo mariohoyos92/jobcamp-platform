@@ -1,17 +1,25 @@
 .home {
-  width: 100vw;
-  height: auto;
+  height: 100%;
+  width: 100%;
   header {
+    position: fixed;
+    top: 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
+    background: white;
+    height: 15vh;
   }
   h2 {
     text-align: center;
   }
-
   .quick-filters {
-    padding: 0 10vw;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 19vw;
+    top: 15vh;
   }
   .bootcamp-type {
     height: 100px;
@@ -19,12 +27,11 @@
     border: solid black;
   }
 
-  .post-job-notification {
-    border: solid lightgray;
-  }
-
-  .selected-tags-container {
-    padding: 1vh 10vw;
+  .jobs {
+    padding-top: 15vh;
+    margin-left: 19vw;
+    width: 80vw;
+    overflow-y: scroll;
   }
 
   .posting {
@@ -35,12 +42,6 @@
     img {
       height: 80px;
       width: 80px;
-    }
-
-    .tags {
-      display: flex;
-      justify-content: space-evenly;
-      align-items: flex-start;
     }
   }
 }
