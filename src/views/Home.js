@@ -1,12 +1,23 @@
 import React, { Component } from "react";
+import ReactQuill from "react-quill";
+import ReactHtmlParser from "react-html-parser";
+import "react-quill/dist/quill.snow.css";
 
 class Home extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      text: ""
+    };
   }
 
+  handleChange = value => {
+    console.log(encodeURI(value));
+    this.setState({
+      text: value
+    });
+  };
   render() {
     return (
       <div className="home">
@@ -19,7 +30,7 @@ class Home extends Component {
           <div>
             <h2>Where bootcamp grads get jobs</h2>
           </div>
-
+          <div>{ReactHtmlParser(decodeURI(encodeURI(this.state.text)))}</div>
           <form className="flex-center">
             <label htmlFor="what">What are you looking for?</label>
             <input type="text" name="what" />
@@ -116,6 +127,19 @@ class Home extends Component {
             <button>Apply Now</button>
           </div>
         </section>
+        <ReactQuill
+          modules={{
+            toolbar: [
+              [{ header: "1" }, { header: "2" }],
+              [{ size: [] }],
+              ["bold", "italic", "underline"],
+              [{ list: "bullet" }, { indent: "-1" }, { indent: "+1" }],
+              ["link"]
+            ]
+          }}
+          onChange={this.handleChange}
+          value={this.state.text}
+        />
       </div>
     );
   }
