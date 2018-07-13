@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactQuill from "react-quill";
 import ReactHtmlParser from "react-html-parser";
+import axios from "axios";
 import "react-quill/dist/quill.snow.css";
 
 class Home extends Component {
@@ -8,8 +9,20 @@ class Home extends Component {
     super(props);
 
     this.state = {
+      jobPosts: [],
       text: ""
     };
+  }
+
+  componentDidMount() {
+    axios
+      .get("/api/jobPosts/all")
+      .then(response => {
+        this.setState({ jobPosts: response.data.jobPosts.Items }, () =>
+          console.log(this.state)
+        );
+      })
+      .catch(console.log);
   }
 
   handleChange = value => {

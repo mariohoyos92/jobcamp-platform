@@ -12,7 +12,6 @@ const getAllJobPosts = (req, res) => {
         .status(500)
         .json({ status: "error", message: "error retrieving job jobPosts" });
     } else {
-      console.log(jobPosts);
       res.status(200).json({ status: "success", jobPosts });
     }
   });
