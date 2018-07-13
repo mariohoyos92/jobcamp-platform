@@ -2,14 +2,14 @@ const uuid = require("uuid/v4");
 
 const { docClient } = require("../dynamo");
 
-const JobPost = (
+function JobPost(
   position,
   tags,
   location,
   jobDescription,
   applyURL,
   applyEmail
-) => {
+) {
   this.jobPostId = uuid();
   this.datePosted = Date.now();
   this.position = position;
@@ -30,7 +30,7 @@ const JobPost = (
   this.highlightColor = "#ABCABC";
 
   return this;
-};
+}
 
 const applyURL =
   "https://stackoverflow.com/jobs/154633/lead-open-source-developer-python-django-jbs-custom-software-solutions?ref=remoteok";
