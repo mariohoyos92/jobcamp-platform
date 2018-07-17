@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "react-quill/dist/quill.snow.css";
+import JobPost from "../components/JobPost";
 
 class Home extends Component {
   constructor(props) {
@@ -24,6 +24,7 @@ class Home extends Component {
   }
 
   render() {
+    const { jobPosts } = this.state;
     return (
       <div className="home">
         <header>
@@ -47,165 +48,11 @@ class Home extends Component {
             <div className="bootcamp-type flex-center">Web Design</div>
             <div className="bootcamp-type flex-center">Web Design</div>
             <div className="bootcamp-type flex-center">Web Design</div>
-            <div className="bootcamp-type flex-center">Web Design</div>
-            <div className="bootcamp-type flex-center">Web Design</div>
-            <div className="bootcamp-type flex-center">Web Design</div>
           </div>
           <div className="jobs">
-            <div className="posting">
-              <img
-                src="https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg"
-                alt="logo"
-              />
-              <div>
-                <h4>Senior Javascript Developer</h4>
-                <h5>Apple</h5>
-              </div>
-
-              <div> City, ST </div>
-              <div> 3h </div>
-              <button>Apply Now</button>
-            </div>
-            <div className="posting">
-              <img
-                src="https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg"
-                alt="logo"
-              />
-              <div>
-                <h4>Senior Javascript Developer</h4>
-                <h5>Apple</h5>
-              </div>
-
-              <div> City, ST </div>
-              <div> 3h </div>
-              <button>Apply Now</button>
-            </div>
-            <div className="posting">
-              <img
-                src="https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg"
-                alt="logo"
-              />
-              <div>
-                <h4>Senior Javascript Developer</h4>
-                <h5>Apple</h5>
-              </div>
-
-              <div> City, ST </div>
-              <div> 3h </div>
-              <button>Apply Now</button>
-            </div>
-            <div className="posting">
-              <img
-                src="https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg"
-                alt="logo"
-              />
-              <div>
-                <h4>Senior Javascript Developer</h4>
-                <h5>Apple</h5>
-              </div>
-
-              <div> City, ST </div>
-              <div> 3h </div>
-              <button>Apply Now</button>
-            </div>
-            <div className="posting">
-              <img
-                src="https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg"
-                alt="logo"
-              />
-              <div>
-                <h4>Senior Javascript Developer</h4>
-                <h5>Apple</h5>
-              </div>
-
-              <div> City, ST </div>
-              <div> 3h </div>
-              <button>Apply Now</button>
-            </div>
-            <div className="posting">
-              <img
-                src="https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg"
-                alt="logo"
-              />
-              <div>
-                <h4>Senior Javascript Developer</h4>
-                <h5>Apple</h5>
-              </div>
-
-              <div> City, ST </div>
-              <div> 3h </div>
-              <button>Apply Now</button>
-            </div>
-            <div className="posting">
-              <img
-                src="https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg"
-                alt="logo"
-              />
-              <div>
-                <h4>Senior Javascript Developer</h4>
-                <h5>Apple</h5>
-              </div>
-
-              <div> City, ST </div>
-              <div> 3h </div>
-              <button>Apply Now</button>
-            </div>
-            <div className="posting">
-              <img
-                src="https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg"
-                alt="logo"
-              />
-              <div>
-                <h4>Senior Javascript Developer</h4>
-                <h5>Apple</h5>
-              </div>
-
-              <div> City, ST </div>
-              <div> 3h </div>
-              <button>Apply Now</button>
-            </div>
-            <div className="posting">
-              <img
-                src="https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg"
-                alt="logo"
-              />
-              <div>
-                <h4>Senior Javascript Developer</h4>
-                <h5>Apple</h5>
-              </div>
-
-              <div> City, ST </div>
-              <div> 3h </div>
-              <button>Apply Now</button>
-            </div>
-            <div className="posting">
-              <img
-                src="https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg"
-                alt="logo"
-              />
-              <div>
-                <h4>Senior Javascript Developer</h4>
-                <h5>Apple</h5>
-              </div>
-
-              <div> City, ST </div>
-              <div> 3h </div>
-              <button>Apply Now</button>
-            </div>
-            <div className="posting">
-              <img
-                src="https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg"
-                alt="logo"
-              />
-              <div>
-                <h4>Senior Javascript Developer</h4>
-                <h5>Apple</h5>
-              </div>
-
-              <div> City, ST </div>
-              <div> 3h </div>
-              <button>Apply Now</button>
-            </div>
+            {jobPosts.map(post => {
+              return <JobPost key={post.postId} postInfo={post} />;
+            })}
           </div>
         </div>
       </div>
