@@ -8,7 +8,7 @@ class Home extends Component {
 
     this.state = {
       jobPosts: [],
-      text: ""
+      searchTerm: ""
     };
   }
 
@@ -16,15 +16,31 @@ class Home extends Component {
     axios
       .get("/api/jobPosts/all")
       .then(response => {
-        this.setState({ jobPosts: response.data.jobPosts.Items }, () =>
-          console.log(this.state)
-        );
+        this.setState({ jobPosts: response.data.jobPosts.Items });
       })
       .catch(console.log);
   }
 
+  handleInputChange = e => {
+    this.setState({
+      searchTerm: e.target.value
+    });
+  };
+
   render() {
-    const { jobPosts } = this.state;
+    const { jobPosts, searchTerm } = this.state;
+    const filteredJobPosts = searchTerm
+      ? jobPosts.filter(post => {
+          const { city, state, country, zip } = post.location;
+          const normalizedSearchTerm = searchTerm.toLowerCase();
+          return (
+            (city && city.toLowerCase().includes(normalizedSearchTerm)) ||
+            (state && state.toLowerCase().includes(normalizedSearchTerm)) ||
+            (country && country.toLowerCase().includes(normalizedSearchTerm)) ||
+            (zip && zip.toLowerCase().includes(normalizedSearchTerm))
+          );
+        })
+      : jobPosts;
     return (
       <div className="home">
         <header>
@@ -33,8 +49,13 @@ class Home extends Component {
             <h2>Where bootcamp grads get jobs</h2>
           </div>
           <form className="flex-center">
-            <label htmlFor="what">What are you looking for?</label>
-            <input type="text" name="what" />
+            <label htmlFor="what">Where (city, state, country, zipCode)?</label>
+            <input
+              type="text"
+              name="search"
+              onChange={this.handleInputChange}
+              value={searchTerm}
+            />
             <button type="submit">Find Jobs</button>
           </form>
           <button>Post a job</button>
@@ -50,7 +71,7 @@ class Home extends Component {
             <div className="bootcamp-type flex-center">Web Design</div>
           </div>
           <div className="jobs">
-            {jobPosts.map(post => {
+            {filteredJobPosts.map(post => {
               return <JobPost key={post.postId} postInfo={post} />;
             })}
           </div>

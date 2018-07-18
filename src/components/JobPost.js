@@ -12,19 +12,20 @@ class JobPost extends Component {
 
   render() {
     const {
-      title,
+      position,
       companyName,
       datePosted,
       applyURL,
       applyMethod,
       companyLogo,
-      location: { city, state, country },
+      location: { city, state, country, zip },
       jobDescription
     } = this.props.postInfo;
+    const { expanded } = this.state;
 
     const applyLinkHref =
       applyMethod === "email" ? `mailto:${applyURL}` : applyURL;
-    console.log(applyMethod, applyURL, applyLinkHref);
+
     return (
       <div>
         <div
@@ -33,17 +34,20 @@ class JobPost extends Component {
         >
           <img src={companyLogo} alt="logo" />
           <div>
-            <h4>{title}</h4>
+            <h4>{position}</h4>
             <h5>{companyName}</h5>
           </div>
 
-          <div>{`${city}, ${state} ${country}`}</div>
+          <div>
+            <p>{`${city}, ${state ? state : ""}`}</p>
+            <p>{`${country} ${zip ? zip : ""}`}</p>
+          </div>
           <div> {moment(datePosted).fromNow()}</div>
           <a href={applyLinkHref}>
             <button>Apply Now</button>
           </a>
         </div>
-        <div>{ReactHtmlParser(decodeURI(jobDescription))}</div>
+        {expanded && <div>{ReactHtmlParser(decodeURI(jobDescription))}</div>}
       </div>
     );
   }

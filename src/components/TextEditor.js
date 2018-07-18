@@ -1,7 +1,6 @@
 import ReactQuill from "react-quill";
 import ReactHtmlParser from "react-html-parser";
 handleChange = value => {
-  console.log(encodeURI(value));
   this.setState({
     text: value
   });
