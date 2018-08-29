@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import JobPost from "../components/JobPost";
+import { FaChevronCircleDown, FaChevronCircleUp } from "react-icons/fa";
 
 class Home extends Component {
   constructor(props) {
@@ -8,7 +9,17 @@ class Home extends Component {
 
     this.state = {
       jobPosts: [],
-      searchTerm: ""
+      searchTerm: "",
+      bootCampTypes: [
+        "Web Development",
+        "Mobile Development",
+        "Data Science",
+        "UI/UX",
+        "Digital Marketing",
+        "Product Management",
+        "Security",
+        "Remote Ok"
+      ]
     };
   }
 
@@ -28,7 +39,7 @@ class Home extends Component {
   };
 
   render() {
-    const { jobPosts, searchTerm } = this.state;
+    const { jobPosts, searchTerm, bootCampTypes } = this.state;
     const filteredJobPosts = searchTerm
       ? jobPosts.filter(post => {
           const { city, state, country, zip } = post.location;
@@ -44,12 +55,13 @@ class Home extends Component {
     return (
       <div className="home">
         <header>
-          <div>
+          <div className="logo">
             <h1>JobCamp</h1>
-            <h2>Where bootcamp grads get jobs</h2>
+            <h2>WHERE BOOTCAMP GRADS GET JOBS</h2>
           </div>
-          <form className="flex-center">
-            <label htmlFor="what">Where (city, state, country, zipCode)?</label>
+          <form className="search">
+            <label htmlFor="search">What are you looking for?</label>
+
             <input
               type="text"
               name="search"
@@ -58,19 +70,30 @@ class Home extends Component {
             />
             <button type="submit">Find Jobs</button>
           </form>
-          <button>Post a job</button>
+          <button className="post-job">Post a job - $99</button>
         </header>
 
         <div className="body">
           <div className="quick-filters">
-            <div className="bootcamp-type flex-center">Web Design</div>
-            <div className="bootcamp-type flex-center">Web Design</div>
-            <div className="bootcamp-type flex-center">Web Design</div>
-            <div className="bootcamp-type flex-center">Web Design</div>
-            <div className="bootcamp-type flex-center">Web Design</div>
-            <div className="bootcamp-type flex-center">Web Design</div>
+            <h3>Quick Filters</h3>
+            {bootCampTypes.map(type => (
+              <div className="bootcamp-type flex-center">{type}</div>
+            ))}
+
+            <div className="feedback-modal">
+              {" "}
+              <h6>
+                Have Feedback? <FaChevronCircleUp style={{ color: "88bbd6" }} />
+              </h6>{" "}
+            </div>
           </div>
           <div className="jobs">
+            {filteredJobPosts.map(post => {
+              return <JobPost key={post.postId} postInfo={post} />;
+            })}
+            {filteredJobPosts.map(post => {
+              return <JobPost key={post.postId} postInfo={post} />;
+            })}
             {filteredJobPosts.map(post => {
               return <JobPost key={post.postId} postInfo={post} />;
             })}

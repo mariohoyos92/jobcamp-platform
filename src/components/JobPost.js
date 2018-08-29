@@ -27,10 +27,14 @@ class JobPost extends Component {
       applyMethod === "email" ? `mailto:${applyURL}` : applyURL;
 
     return (
-      <div>
+      <div className="post-container">
         <div
-          className="posting"
-          onClick={() => this.setState({ expanded: !this.state.expanded })}
+          className={`post-header ${expanded ? "expanded" : ""}`}
+          onClick={() =>
+            this.setState({
+              expanded: !this.state.expanded
+            })
+          }
         >
           <img src={companyLogo} alt="logo" />
           <div>
@@ -39,15 +43,19 @@ class JobPost extends Component {
           </div>
 
           <div>
-            <p>{`${city}, ${state ? state : ""}`}</p>
-            <p>{`${country} ${zip ? zip : ""}`}</p>
+            <p>{`${city}${state ? ", " + state : ""}`}</p>
+            <p>{`${country}${zip ? ", " + zip : ""}`}</p>
           </div>
           <div> {moment(datePosted).fromNow()}</div>
           <a href={applyLinkHref}>
             <button>Apply Now</button>
           </a>
         </div>
-        {expanded && <div>{ReactHtmlParser(decodeURI(jobDescription))}</div>}
+        {expanded && (
+          <div className="job-description">
+            {ReactHtmlParser(decodeURI(jobDescription))}
+          </div>
+        )}
       </div>
     );
   }

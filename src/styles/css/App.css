@@ -1295,34 +1295,116 @@ template {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    height: 15vh;
     background: white;
-    height: 15vh; }
+    color: black; }
+    .home header .logo {
+      color: white;
+      display: flex;
+      width: 19%;
+      flex-direction: column;
+      justify-content: space-around;
+      background: #99d3df; }
+    .home header h1 {
+      font-size: 3.5em;
+      margin: 1% 2%; }
     .home header h2 {
-      text-align: center;
-      font-size: 1em; }
+      font-size: 0.75em;
+      margin: 1% 2%;
+      padding-bottom: 5%; }
+    .home header .search {
+      display: flex;
+      justify-content: space-evenly;
+      width: 50%;
+      align-items: center;
+      font-size: 1.3em; }
+      .home header .search.labels {
+        width: 100%;
+        display: flex;
+        text-align: left; }
+  .home button {
+    color: white;
+    background: #88bbd6; }
+    .home button:hover {
+      cursor: pointer;
+      background: white;
+      color: #88bbd6;
+      border: solid #88bbd6 2px; }
+    .home button.post-job {
+      border: solid white 2px;
+      border-radius: 5%;
+      margin: 1%; }
+      .home button.post-job:hover {
+        cursor: pointer;
+        background: white;
+        color: #88bbd6;
+        border: solid #88bbd6 2px; }
   .home .quick-filters {
+    background: white;
     position: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 19vw;
-    top: 15vh; }
+    min-height: 85vh;
+    top: 15vh;
+    color: black; }
+    .home .quick-filters h3 {
+      font-size: 1.5em; }
   .home .bootcamp-type {
-    height: 100px;
-    width: 100px;
-    border: solid black; }
+    width: 80%;
+    border: solid 0.3px white;
+    padding: 5px 0; }
+    .home .bootcamp-type.selected {
+      cursor: pointer;
+      background: white;
+      color: #88bbd6; }
+    .home .bootcamp-type:hover {
+      cursor: pointer;
+      background: white;
+      color: #88bbd6; }
   .home .jobs {
     padding-top: 15vh;
     margin-left: 19vw;
-    width: 80vw;
-    overflow-y: scroll; }
-  .home .posting {
+    width: 81vw;
+    height: 100vh;
+    overflow-y: scroll;
+    background: #99d3df; }
+  .home .post-container {
+    color: black;
+    transition: all 0.3s;
+    margin: 1% 1%;
+    padding: 0;
+    background: white; }
+  .home .post-header {
+    padding: 1% 0;
     display: flex;
     justify-content: space-around;
-    align-items: center; }
-    .home .posting img {
+    align-items: center;
+    text-align: left; }
+    .home .post-header.expanded {
+      background: #f3f3f3; }
+    .home .post-header img {
       height: 80px;
       width: 80px; }
+  .home .job-description {
+    background: white;
+    padding: 3% 5%; }
+  .home .feedback-modal {
+    position: fixed;
+    width: 15%;
+    height: 4vh;
+    bottom: 0;
+    left: 2%;
+    text-align: center;
+    background: #f3f3f3;
+    color: black;
+    border-radius: 5%; }
+    .home .feedback-modal h6 {
+      margin: 0;
+      font-size: 1em; }
+    .home .feedback-modal:hover {
+      text-decoration: underline; }
 
 h1 {
   font-family: BebasNeue, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; }
